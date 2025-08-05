@@ -15,17 +15,54 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
   color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-subtitle {
+  font-size: 1.2em;
+  color: #61dafb;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.App-links {
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-4 {
+  gap: 16px;
 }
 
 @keyframes App-logo-spin {

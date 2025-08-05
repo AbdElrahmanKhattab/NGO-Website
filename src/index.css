@@ -1,13 +1,74 @@
+/* CSS Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Custom utility classes */
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+/* Custom focus styles for form controls */
+.form-control:focus,
+.form-select:focus {
+  border-color: #ffcd05 !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 205, 5, 0.25) !important;
+}
+
+/* Custom button hover effects */
+.btn-warning:hover {
+  background-color: #e6b800 !important;
+  border-color: #e6b800 !important;
+}
+
+/* Custom text color for warning */
+.text-warning {
+  color: #ffcd05 !important;
+}
+
+/* Custom background color for warning */
+.bg-warning {
+  background-color: #ffcd05 !important;
+}
+
+/* Custom form check input styles */
+.form-check-input:checked {
+  background-color: #ffcd05 !important;
+  border-color: #ffcd05 !important;
+}
+
+.form-check-input:focus {
+  border-color: #ffcd05 !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 205, 5, 0.25) !important;
+}
+
+/* Custom nav link hover */
+.nav-link:hover {
+  color: #ffcd05 !important;
+}
+
+.nav-link.active {
+  color: #ffcd05 !important;
+}
+
+/* Custom background for sections */
+.bg-light-custom {
+  background-color: #FBF6ED !important;
 }
