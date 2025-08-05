@@ -1,4 +1,3 @@
-/* CSS Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -20,35 +19,31 @@ code {
     monospace;
 }
 
-/* Custom utility classes */
 .min-vh-75 {
   min-height: 75vh;
 }
 
-/* Custom focus styles for form controls */
 .form-control:focus,
 .form-select:focus {
   border-color: #ffcd05 !important;
   box-shadow: 0 0 0 0.2rem rgba(255, 205, 5, 0.25) !important;
 }
 
-/* Custom button hover effects */
 .btn-warning:hover {
   background-color: #e6b800 !important;
   border-color: #e6b800 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Custom text color for warning */
 .text-warning {
   color: #ffcd05 !important;
 }
 
-/* Custom background color for warning */
 .bg-warning {
   background-color: #ffcd05 !important;
 }
 
-/* Custom form check input styles */
 .form-check-input:checked {
   background-color: #ffcd05 !important;
   border-color: #ffcd05 !important;
@@ -59,16 +54,241 @@ code {
   box-shadow: 0 0 0 0.2rem rgba(255, 205, 5, 0.25) !important;
 }
 
-/* Custom nav link hover */
 .nav-link:hover {
   color: #ffcd05 !important;
+  transform: translateY(-1px);
 }
 
 .nav-link.active {
   color: #ffcd05 !important;
 }
 
-/* Custom background for sections */
 .bg-light-custom {
   background-color: #FBF6ED !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.6s ease-out;
+}
+
+.hover-bounce:hover {
+  animation: bounce 0.6s ease-in-out;
+}
+
+.hover-pulse:hover {
+  animation: pulse 0.6s ease-in-out;
+}
+
+.hover-shake:hover {
+  animation: shake 0.6s ease-in-out;
+}
+
+.hover-float:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+.rotate {
+  animation: rotate 2s linear infinite;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+}
+
+.card, .bg-white {
+  transition: all 0.3s ease;
+}
+
+.card:hover, .bg-white:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.fas, .fa {
+  transition: all 0.3s ease;
+}
+
+.fas:hover, .fa:hover {
+  transform: scale(1.1);
+}
+
+.form-control, .form-select {
+  transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  transform: scale(1.02);
+}
+
+.display-4 {
+  transition: all 0.3s ease;
+}
+
+.display-4:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 205, 5, 0.5);
+}
+
+.img-fluid {
+  transition: all 0.3s ease;
+}
+
+.img-fluid:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hover-bounce:hover,
+  .hover-pulse:hover,
+  .hover-shake:hover {
+    animation: none;
+  }
 }

@@ -12,11 +12,11 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-sm sticky-top">
+    <header className="bg-white shadow-sm sticky-top fade-in">
       <div className="px-3">
         <div className="d-flex justify-content-around align-items-center py-3">
-          <div className="d-flex align-items-center">
-            <i className="fas fa-book-open text-warning me-3" style={{fontSize: '36px'}}></i>
+          <div className="d-flex align-items-center hover-pulse">
+            <i className="fas fa-book-open text-warning me-3 float" style={{fontSize: '36px'}}></i>
             <h1 className="h5 mb-0 fw-bold">
               Basti Ki <span className="text-warning">Pathshala</span>
             </h1>
@@ -27,7 +27,7 @@ const Header = () => {
               <li className="nav-item">
                 <a 
                   href="#home" 
-                  className="nav-link fw-medium text-dark active"
+                  className="nav-link fw-medium text-dark active hover-bounce"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection('home');
@@ -40,7 +40,7 @@ const Header = () => {
               <li className="nav-item">
                 <a 
                   href="#about" 
-                  className="nav-link fw-medium text-dark"
+                  className="nav-link fw-medium text-dark hover-bounce"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection('about');
@@ -52,7 +52,7 @@ const Header = () => {
               <li className="nav-item">
                 <a 
                   href="#volunteer" 
-                  className="nav-link fw-medium text-dark"
+                  className="nav-link fw-medium text-dark hover-bounce"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection('volunteer');
@@ -65,7 +65,7 @@ const Header = () => {
             </ul>
           </nav>
           
-          <button className="btn btn-warning fw-semibold px-4 py-2 rounded-pill">
+          <button className="btn btn-warning fw-semibold px-4 py-2 rounded-pill hover-shake">
             Donate Now
           </button>
         </div>

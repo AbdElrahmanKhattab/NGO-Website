@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const VolunteerForm = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const VolunteerForm = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [volunteerRef, isVolunteerVisible] = useScrollAnimation(0.2);
 
   const volunteerAreas = [
     'Teaching & Tutoring',
@@ -54,7 +56,7 @@ const VolunteerForm = () => {
 
   if (submitted) {
     return (
-      <section className="min-vh-100 d-flex align-items-center justify-content-center bg-light-custom">
+      <section className="min-vh-100 d-flex align-items-center justify-content-center" style={{backgroundColor: '#FBF6ED'}}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-6">
@@ -82,48 +84,44 @@ const VolunteerForm = () => {
   }
 
   return (
-    <section id="volunteer" className="py-5 bg-light-custom">
+    <section id="volunteer" ref={volunteerRef} className={`py-5 bg-light-custom ${isVolunteerVisible ? 'fade-in' : 'animate-on-scroll'}`}>
       <div className="container">
-        {/* Header */}
         <div className="text-center mb-5">
-          <h1 className="display-4 fw-bold mb-4">Join Our Volunteer Family</h1>
-          <p className="lead text-muted">
+          <h1 className="display-4 fw-bold mb-4 scale-in">Join Our Volunteer Family</h1>
+          <p className="lead text-muted slide-in-left">
             Ready to make a difference? Fill out this form to start your journey as a volunteer 
             with Basti Ki Pathshala Foundation. Every skill and passion has a place in our mission.
           </p>
         </div>
 
-        {/* Benefits Section */}
         <div className="row g-4 mb-5">
           <div className="col-md-4">
-            <div className="bg-white p-4 rounded-3 shadow-sm text-center h-100">
-              <i className="fas fa-calendar text-warning mb-3" style={{fontSize: '2rem'}}></i>
+            <div className="bg-white p-4 rounded-3 shadow-sm text-center h-100 hover-float">
+              <i className="fas fa-calendar text-warning mb-3 pulse" style={{fontSize: '2rem'}}></i>
               <h3 className="h5 fw-bold mb-2">Flexible Schedule</h3>
               <p className="text-muted small mb-0">Volunteer on your own terms</p>
             </div>
           </div>
           <div className="col-md-4">
-            <div className="bg-white p-4 rounded-3 shadow-sm text-center h-100">
-              <i className="fas fa-clock text-warning mb-3" style={{fontSize: '2rem'}}></i>
+            <div className="bg-white p-4 rounded-3 shadow-sm text-center h-100 hover-float">
+              <i className="fas fa-clock text-warning mb-3 pulse" style={{fontSize: '2rem'}}></i>
               <h3 className="h5 fw-bold mb-2">Meaningful Impact</h3>
               <p className="text-muted small mb-0">See the direct results of your work</p>
             </div>
           </div>
           <div className="col-md-4">
-            <div className="bg-white p-4 rounded-3 shadow-sm text-center h-100">
-              <i className="fas fa-heart text-warning mb-3" style={{fontSize: '2rem'}}></i>
+            <div className="bg-white p-4 rounded-3 shadow-sm text-center h-100 hover-float">
+              <i className="fas fa-heart text-warning mb-3 pulse" style={{fontSize: '2rem'}}></i>
               <h3 className="h5 fw-bold mb-2">Community</h3>
               <p className="text-muted small mb-0">Join like-minded changemakers</p>
             </div>
           </div>
         </div>
 
-        {/* Form */}
         <div className="row justify-content-center">
           <div className="col-lg-10">
             <div className="bg-white rounded-4 shadow-lg p-4 p-md-5">
               <form onSubmit={handleSubmit}>
-                {/* Personal Information */}
                 <div className="mb-5">
                   <h2 className="h3 fw-bold mb-4 d-flex align-items-center">
                     <i className="fas fa-user text-warning me-3"></i>
@@ -157,7 +155,6 @@ const VolunteerForm = () => {
                   </div>
                 </div>
 
-                {/* Contact Information */}
                 <div className="mb-5">
                   <h2 className="h3 fw-bold mb-4 d-flex align-items-center">
                     <i className="fas fa-envelope text-warning me-3"></i>
@@ -212,7 +209,6 @@ const VolunteerForm = () => {
                   </div>
                 </div>
 
-                {/* Availability */}
                 <div className="mb-5">
                   <h2 className="h3 fw-bold mb-4 d-flex align-items-center">
                     <i className="fas fa-clock text-warning me-3"></i>
@@ -239,7 +235,6 @@ const VolunteerForm = () => {
                   </div>
                 </div>
 
-                {/* Areas of Interest */}
                 <div className="mb-5">
                   <h2 className="h3 fw-bold mb-4">Areas of Interest</h2>
                   <p className="text-muted mb-4">Select all areas where you'd like to contribute:</p>
@@ -263,7 +258,6 @@ const VolunteerForm = () => {
                   </div>
                 </div>
 
-                {/* Experience & Skills */}
                 <div className="mb-5">
                   <div className="mb-4">
                     <label className="form-label fw-semibold">
@@ -309,9 +303,8 @@ const VolunteerForm = () => {
                   </div>
                 </div>
 
-                {/* Submit Button */}
                 <div className="text-center">
-                  <button type="submit" className="btn btn-warning btn-lg fw-bold px-5 py-3">
+                  <button type="submit" className="btn btn-warning btn-lg fw-bold px-5 py-3 hover-pulse">
                     <i className="fas fa-paper-plane me-3"></i>
                     Submit Application
                   </button>

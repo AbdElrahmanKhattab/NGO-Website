@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const Stats = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
-  const statsRef = useRef(null);
+  const [statsSectionRef, isStatsVisible] = useScrollAnimation(0.3);
 
-  // Counting animation hook
   const useCountUp = (end, duration = 2000) => {
     const [count, setCount] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -19,7 +19,6 @@ const Stats = () => {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
 
-          // Easing function for smooth animation
           const easeOutQuart = 1 - Math.pow(1 - progress, 4);
           const currentValue = Math.floor(startValue + (end - startValue) * easeOutQuart);
 
@@ -44,57 +43,38 @@ const Stats = () => {
     return { count, startAnimation, isAnimating };
   };
 
-  // Individual count-up hooks for each stat
   const { count: childrenCount, startAnimation: startChildrenAnimation } = useCountUp(31245);
   const { count: centersCount, startAnimation: startCentersAnimation } = useCountUp(28976);
   const { count: volunteersCount, startAnimation: startVolunteersAnimation } = useCountUp(19854);
   const { count: scholarshipsCount, startAnimation: startScholarshipsAnimation } = useCountUp(10989);
 
-  // Intersection Observer for triggering animation when stats section is visible
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-            // Start all animations
-            startChildrenAnimation();
-            startCentersAnimation();
-            startVolunteersAnimation();
-            startScholarshipsAnimation();
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
+    if (isStatsVisible && !hasAnimated) {
+      setHasAnimated(true);
+      setTimeout(() => {
+        startChildrenAnimation();
+        startCentersAnimation();
+        startVolunteersAnimation();
+        startScholarshipsAnimation();
+      }, 300);
     }
-
-    return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
-      }
-    };
-  }, [hasAnimated, startChildrenAnimation, startCentersAnimation, startVolunteersAnimation, startScholarshipsAnimation]);
+  }, [isStatsVisible, hasAnimated, startChildrenAnimation, startCentersAnimation, startVolunteersAnimation, startScholarshipsAnimation]);
 
   return (
     <section 
-      className="" 
-      ref={statsRef}
+      ref={statsSectionRef}
+      className={`py-5 ${isStatsVisible ? 'fade-in' : 'animate-on-scroll'}`}
       style={{
-        background: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("https://bastikipathshala.org/wp-content/uploads/2024/02/IMG_0189-1-scaled.jpg") center/cover no-repeat',
-        backgroundAttachment: 'fixed',
-        padding: '100px',
+        background: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("https://bastikipathshala.org/wp-content/uploads/2024/02/IMG_6337-scaled.jpg") center/cover no-repeat',
+        backgroundAttachment: 'fixed'
       }}
     >
       <div className="container">
         <div className="row g-4">
           <div className="col-md-6 col-lg-3">
-            <div className="text-center text-white">
+            <div className="text-center text-white hover-float">
               <div className="d-flex justify-content-center align-items-center mb-3">
-                <span className="display-4 fw-bold text-warning">
+                <span className="display-4 fw-bold text-warning hover-pulse">
                   {childrenCount.toLocaleString()}
                 </span>
               </div>
@@ -103,9 +83,9 @@ const Stats = () => {
           </div>
 
           <div className="col-md-6 col-lg-3">
-            <div className="text-center text-white">
+            <div className="text-center text-white hover-float">
               <div className="d-flex justify-content-center align-items-center mb-3">
-                <span className="display-4 fw-bold text-warning">
+                <span className="display-4 fw-bold text-warning hover-pulse">
                   {centersCount.toLocaleString()}
                 </span>
               </div>
@@ -114,9 +94,9 @@ const Stats = () => {
           </div>
 
           <div className="col-md-6 col-lg-3">
-            <div className="text-center text-white">
+            <div className="text-center text-white hover-float">
               <div className="d-flex justify-content-center align-items-center mb-3">
-                <span className="display-4 fw-bold text-warning">
+                <span className="display-4 fw-bold text-warning hover-pulse">
                   {volunteersCount.toLocaleString()}
                 </span>
               </div>
@@ -125,9 +105,9 @@ const Stats = () => {
           </div>
 
           <div className="col-md-6 col-lg-3">
-            <div className="text-center text-white">
+            <div className="text-center text-white hover-float">
               <div className="d-flex justify-content-center align-items-center mb-3">
-                <span className="display-4 fw-bold text-warning">
+                <span className="display-4 fw-bold text-warning hover-pulse">
                   {scholarshipsCount.toLocaleString()}
                 </span>
               </div>
